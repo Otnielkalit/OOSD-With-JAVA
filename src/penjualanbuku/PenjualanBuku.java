@@ -735,7 +735,7 @@ public class PenjualanBuku{
         System.out.println("\t======== Edit Profil Toko Buku Jaya Sukses =======");
         Scanner scan = new Scanner(System.in);
         System.out.print("Nama Toko : ");
-        namaToko = scan.next();
+        String namaToko = scan.next();
         System.out.print("Alamat : ");
         alamat = scan.next();
         System.out.print("Pemilik Toko : ");

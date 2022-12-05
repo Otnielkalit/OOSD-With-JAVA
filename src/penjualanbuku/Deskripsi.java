@@ -57,7 +57,9 @@ public class Deskripsi{
     }
 
     void setDeskripsi(String description, String detailProduk, String packing) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.description = description;
+        this.detailProduk = detailProduk;
+        this.packing = packing;
     }
     
     

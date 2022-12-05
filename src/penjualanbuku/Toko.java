@@ -102,7 +102,7 @@ public class Toko implements Display{
         System.out.print("Email : ");
         email = scan.next();
         System.out.print("No Telepon : ");
-        no_telp = scan.nextLine();
+        no_telp = scan.next();
     }
     
     //Peraturan Desa
