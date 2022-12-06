@@ -86,6 +86,7 @@ public class PenjualanBuku{
     public static void main(String[] args){
         
         PenjualanBuku toko = new PenjualanBuku();
+        Toko to = new Toko();
         Autentikasi auten = new Autentikasi();
         Buku buku = new Buku();
         Penjualan penjualan = new Penjualan();
@@ -160,7 +161,7 @@ public class PenjualanBuku{
                             System.out.print("Pilih : ");
                             sub = scan.nextInt();
                             if (sub == 1) {
-                                toko.editProfil();
+                                to.editToko();
                                 Toko[0].setToko(namaToko, alamat, pemilik, karyawan, email, no_telp);
                             }
 
@@ -709,7 +710,7 @@ public class PenjualanBuku{
         System.out.println("========= Selamat Datang Admin Baen hamu na denggan tu Customer ==========");
         System.out.println("\t   ====== ADMIN TOKO BUKU JAYA SUKSES =======");
         System.out.println("1. Profil Toko Buku Jaya Sukses");
-        System.out.println("2. Penjualan Buku");
+        System.out.println("2. Deskripsi Toko");
         System.out.println("3. Buat Event Bazar");
         System.out.println("4. Kelola Penjualan");
         System.out.println("5. Kelola Event Bazar");
@@ -735,7 +736,7 @@ public class PenjualanBuku{
         System.out.println("\t======== Edit Profil Toko Buku Jaya Sukses =======");
         Scanner scan = new Scanner(System.in);
         System.out.print("Nama Toko : ");
-        String namaToko = scan.next();
+        namaToko = scan.next();
         System.out.print("Alamat : ");
         alamat = scan.next();
         System.out.print("Pemilik Toko : ");
