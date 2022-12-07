@@ -33,7 +33,7 @@ public class Autentikasi {
         System.out.print("Password: ");
         password = scan.nextLine();
         
-         if("Admin".equals(username) && "admin123".equals(password)){
+         if("a".equals(username) && "a".equals(password)){
             System.out.println("Selamat Datang Admin");
         }else{
             System.out.println("Gagal Login, masukan username & password yang benar");
@@ -52,7 +52,7 @@ public class Autentikasi {
         password = scan.nextLine();
         System.out.println("================================");
 
-        if("Pembeli".equals(username) && "pembeli123".equals(password)){
+        if("p".equals(username) && "p".equals(password)){
             System.out.println("Selamat Datang Customer kami!");
         }else{
             System.out.println("Gagal Login, masukkan username & password yang benar");

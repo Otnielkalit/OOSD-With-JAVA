@@ -43,7 +43,7 @@ public class Buku {
     
     
      public void tampilBuku(){
-        System.out.println("No" +"\tNama" + "\t\tJumlah Buku"+"\tHarga"+"\tTipe"+"\tAlamat");
+        System.out.println("No" +"\tNama" + "\t\t      Jumlah Buku"+              "\tHarga"+"         \tTipe"+"     \tPenerbit");
         for(int i=0;i<buku.size();i++){
             if(buku.get(i).jumlah_buku < 0){
                 System.out.println("Sisa Buku");
@@ -53,7 +53,7 @@ public class Buku {
             System.out.println(i+1+". "+"\t"+buku.get(i).nama
                     +"\t\t"+ buku.get(i).jumlah_buku
                     +"\t\t"+ buku.get(i).harga
-                    +"\t"+ buku.get(i).tipeBuku
+                    +"\t\t"+ buku.get(i).tipeBuku
                     +"\t"+ buku.get(i).alamat
             );
         }
@@ -83,7 +83,7 @@ public class Buku {
     }
     
      public void updateBuku(String nama,int jumlah_buku, int harga,  TipeBuku tipeBuku, String alamat, int opsi){
-        buku.set(opsi, new Buku(nama, jumlah_buku, harga, tipeBuku, alamat));
+        buku.set(opsi, new Buku(nama, jumlah_buku, harga, tipeBuku.PELAJARAN, alamat));
     }
      
     public void deleteHomestay(int opsi){

@@ -86,6 +86,7 @@ public class PenjualanBuku{
     public static void main(String[] args){
         
         PenjualanBuku toko = new PenjualanBuku();
+        EventBazar even = new EventBazar();
         Toko to = new Toko();
         Autentikasi auten = new Autentikasi();
         Buku buku = new Buku();
@@ -120,13 +121,16 @@ public class PenjualanBuku{
         
         /* EVENT BAZAR TOKO BUKU JAYA SUKSES */
         EventBazar event = new EventBazar();
-        event.addEventBazar("Futsal", "10/12/2019", "AFF");
-        event.addEventBazar("Inovasi", "05/10/2019", "Desa");
+        event.addEventBazar("Bazar Akbar", "25/12/2022", "Medan merdeka");
+        event.addEventBazar("Inovasi", "30/12/2022", "Balige");
         
         // Customer Service
         CustomerService laporan = new CustomerService();
         laporan.addLaporan("haol", "5", "olo");
         laporan.addLaporan("tiang", "4", "daong");
+        
+        //Buku
+        buku.addBuku("Habislah", 5, 2000000, TipeBuku.PELAJARAN, "Gramedia");
         
         
         /* KOMENTAR */
@@ -212,7 +216,7 @@ public class PenjualanBuku{
                             }
 
                             if (sub == 2) {
-                                System.out.println("=====Edit Peraturan=====");
+                                System.out.println("===== Edit Deskripsi =====");
                                 for (int i = 0; i < Deskripsi.length; i++) {
                                     if (Deskripsi[i].getDescription()!= null) {
                                         System.out.println(i + 1 + ".");
@@ -269,8 +273,8 @@ public class PenjualanBuku{
                                 harga = scan.nextInt();
                                 System.out.println("Pilihan : Pelajaran, Tutorial, Novel");
                                 System.out.printf("Tipe : ");
-                                tipe = scan.next();
-                                System.out.printf("Alamat : ");
+                                tipe = scan.next().toUpperCase();
+                                System.out.printf("Penerbit : ");
                                 alamat = scan.next();
                                 buku.addBuku(nama, jumlah_buku, harga, TipeBuku.valueOf(tipe), alamat);
 
@@ -408,26 +412,26 @@ public class PenjualanBuku{
                             System.out.println("Pilih : ");
                             sub = scan.nextInt();
                             if (sub == 1) {
-                                String kades, penyelanggara;
+                                String pemilik, penyelanggara;
                                 System.out.printf("Judul : ");
                                 description = scan.next();
                                 System.out.printf("Tanggal : ");
-                                kades = scan.next();
+                                pemilik = scan.next();
                                 System.out.println("Penyelenggara : ");
                                 penyelanggara = scan.next();
                                 event.addEventBazar(description, pemilik, penyelanggara);
                             }
                             if (sub == 2) {
                                 String description, pemilik, penyelanggara;
-                                System.out.println("Pilih Event : ");
+                                System.out.println("Pilih Event ke : ");
                                 dl = scan.nextInt();
 
                                 if (dl > 0) {
-                                    System.out.printf("Judul : ");
+                                    System.out.printf("Nama Event : ");
                                     description = scan.next();
                                     System.out.printf("Tanggal : ");
                                     pemilik = scan.next();
-                                    System.out.println("Nama  Desa : ");
+                                    System.out.println("Tempat : ");
                                     penyelanggara = scan.next();
                                     event.updateEventBazar(dl - 1, description, pemilik, penyelanggara);
                                 } else {
@@ -498,7 +502,7 @@ public class PenjualanBuku{
                         System.out.println("0. Keluar");
                         a = scan.nextInt();
                         if (a == 1) {
-                            System.out.println("\t====== Daftar Request =======");
+                            System.out.println("\t====== Daftar Pengembalian Buku =======");
                             form.tampil();
                         }
                         if (a == 2) {
@@ -557,7 +561,7 @@ public class PenjualanBuku{
                             int jumlah_kamar,jumlah,total,alamat1;
                             String nama1, status, lokasi1 = null;
                             long no_telp;
-                            System.out.println("Homestay no : ");
+                            System.out.println("Buku Nomor ke : ");
                             dl = scan.nextInt();
                             int pos = dl - 1;
 
@@ -576,7 +580,7 @@ public class PenjualanBuku{
                             for (int i = 0; i < buku.buku.size(); i++) {
                                 if (pos == i) {
                                     System.out.println(buku.buku.get(i).nama);
-                                    System.out.println("Otneil");
+                                    System.out.println("Otniel");
                                     jumlah = buku.buku.get(i).jumlah_buku;
                                     System.out.println(jumlah);
                                     buku.updateBuku(buku.buku.get(dl-1).nama , buku.buku.get(dl-1).jumlah_buku= jumlah, utama = buku.buku.get(dl-1).harga, buku.buku.get(dl-1).tipeBuku.PELAJARAN,  buku.buku.get(dl-1).alamat, dl-1);
@@ -614,13 +618,15 @@ public class PenjualanBuku{
                         } while (sub != 0);
                     }
                     if (utama == 5) {
-                        String hal, nama;
+                        String hal, namaAnda, namaBuku;
                         System.out.println("\t======= Pengembalian Buku =======");
                         System.out.print("Alasan : ");
                         hal = scan.next();
+                        System.out.print("Nama Anda : ");
+                        namaAnda = scan.next();
                         System.out.print("Nama Buku : ");
-                        nama = scan.next();
-                        form.addPermohonan(hal, nama);
+                        namaBuku = scan.next();
+                        form.addPermohonan(hal, namaBuku, namaBuku);
                     }
                     if (utama == 6) {
                         int dl;
@@ -691,7 +697,7 @@ public class PenjualanBuku{
                     }
                     if (utama == 8) {
                         String koment;
-                        System.out.println("\t========== Berikan Penilaina Anda  ==========");
+                        System.out.println("\t========== Berikan Penilaian Anda  ==========");
                         System.out.print("Masukkan Penilaian Anda : ");
                         koment = scan.next();
                         komen.addKomentar(koment);
@@ -711,11 +717,11 @@ public class PenjualanBuku{
         System.out.println("\t   ====== ADMIN TOKO BUKU JAYA SUKSES =======");
         System.out.println("1. Profil Toko Buku Jaya Sukses");
         System.out.println("2. Deskripsi Toko");
-        System.out.println("3. Buat Event Bazar");
+        System.out.println("3. Buku yang dijual");
         System.out.println("4. Kelola Penjualan");
-        System.out.println("5. Kelola Event Bazar");
+        System.out.println("5. Event Bazar Buku");
         System.out.println("6. Kelola Laporan Keuangan");
-        System.out.println("7. Laporan");
+        System.out.println("7. Pengembalian buku & Penilaian");
         System.out.println("0. Back");
     }
     
@@ -723,29 +729,12 @@ public class PenjualanBuku{
         System.out.println("========= Selamat Datang Customer kami Buku adalah jendela Dunia ==========");
         System.out.println("1. Profil Toko Buku Jaya Suskes");
         System.out.println("2. Deskripsi Toko");
-        System.out.println("3. Informasi Event Bazar Buku");
-        System.out.println("4. Pemesanan HomeStay");
-        System.out.println("5. Request Surat Permohonan");
-        System.out.println("6. Kelola Penjualan");
+        System.out.println("3. Informasi Bazar Buku");
+        System.out.println("4. Pemesanan Buku");
+        System.out.println("5. Pengembalian Buku");
+        System.out.println("6. Pengembalian Buku");
         System.out.println("7. Laporan Keuangan");
         System.out.println("8. Komentar");
         System.out.println("0. Back");
-    }
-    
-    public void editProfil() {
-        System.out.println("\t======== Edit Profil Toko Buku Jaya Sukses =======");
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Nama Toko : ");
-        namaToko = scan.next();
-        System.out.print("Alamat : ");
-        alamat = scan.next();
-        System.out.print("Pemilik Toko : ");
-        pemilik = scan.next();
-        System.out.print("Karyawan : ");
-        karyawan = scan.next();
-        System.out.print("Email : ");
-        email = scan.next();
-        System.out.print("Nomor Telepon : ");
-        no_telp = scan.next();
     }
 }
