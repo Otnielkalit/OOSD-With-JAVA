@@ -71,7 +71,7 @@ public class Buku {
         buku.set(opsi, new Buku(nama, jumlah_buku, harga, tipeBuku.PELAJARAN, alamat));
     }
      
-    public void deleteHomestay(int opsi){
+    public void deleteBuku(int opsi){
         for(int i=0;i<buku.size();i++){
             if(opsi==i){
                 buku.remove(i);

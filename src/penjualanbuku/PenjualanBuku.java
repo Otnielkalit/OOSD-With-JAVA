@@ -223,7 +223,7 @@ public class PenjualanBuku{
                             if (sub == 2) {
                                 String nama, tipe, alamat;
                                 int jumlah_buku, harga;
-                                System.out.println("Pilih Homestay : ");
+                                System.out.println("Pilih Buku : ");
                                 dl = scan.nextInt();
 
                                 if (dl > 0) {
@@ -248,7 +248,7 @@ public class PenjualanBuku{
                                 System.out.println("Pilih Buku yang ingin dihapus : ");
                                 dl = scan.nextInt();
                                 if (dl > 0) {
-                                    buku.deleteHomestay(dl - 1);
+                                    buku.deleteBuku(dl - 1);
                                 } else {
                                     break;
                                 }
