@@ -59,22 +59,7 @@ public class Buku {
         }
     }
     
-//    public void addHomestay(String nama,int jumlah_kamar, int harga, String tipe, String alamat){
-//        homestay.add(new Homestay(nama, jumlah_kamar, harga, tipe, alamat));
-//    }
-//    
-//    public void deleteHomestay(int opsi){
-//        for(int i=0;i<homestay.size();i++){
-//            if(opsi==i){
-//                homestay.remove(i);
-//            }
-//        }
-//    }
-//    
-//    public void updateHomestay(String nama,int jumlah_kamar, int harga, String tipe, String alamat, int opsi){
-//        homestay.set(opsi, new Homestay(nama, jumlah_kamar, harga, tipe, alamat));
-//    }
-//    
+
     
     
 
