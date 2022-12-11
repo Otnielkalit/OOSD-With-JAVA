@@ -45,11 +45,12 @@ public class Pemesanan {
     }
     
     public void show(){
-        System.out.println("No"+"\t\tNama Buku"+"\t\tNo Telp"+"\t\tJumlah Buku"+"\t\tAlamat"+"\t\tStatus");
+        System.out.println("No"+"\t\tNama Anda"+"\t\tNo Telp"+"\t\tJumlah Buku"+"\t\tAlamat"+"\t\tStatus");
         for(int i = 0;i<pemesanan.size();i++){
             System.out.println(i+1+"\t\t"+pemesanan.get(i).nama+"\t\t"+pemesanan.get(i).no_telp+"\t\t"+pemesanan.get(i).jumlah_buku+"\t\t"+pemesanan.get(i).alamat+"\t\t"+pemesanan.get(i).status);
         }
     }
+
     public void pesanBuku(int jumlah_buku, String nama, long no_telp,String alamat,String status){
         pemesanan.add(new Pemesanan(jumlah_buku, nama, no_telp,alamat, status));
     }

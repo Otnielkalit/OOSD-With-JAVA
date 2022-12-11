@@ -4,6 +4,8 @@
  */
 package penjualanbuku;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -11,76 +13,12 @@ import java.util.Scanner;
  * @author otnie
  */
 
-//public class PenjualanBuku {
-
-    
-    
-//    public static void main(String[] args) {
-//        Autentikasi auth = new Autentikasi();
-//        Scanner sc = new Scanner(System.in);
-//        int opsi = 0;
-//            do {
-//            System.out.println("1.Admin\n2.Pembeli");
-//            System.out.print("Pilih : ");
-//            opsi = sc.nextInt();
-//            switch(opsi) {
-//                case 1 -> {
-////                    auth.loginAdmin();
-//                        System.out.println("========= Selamat Datang Admin Baen hamu na denggan tu Customer ==========");
-//                        System.out.println("\t   ====== ADMIN TOKO BUKU JAYA SUKSES =======");
-//                    while(true) {
-//                        do {
-//                        System.out.println("1. Profil Toko Buku Jaya Sukses");
-//                        System.out.println("2. Deskripsi Toko");
-//                        System.out.println("3. Kelola Buku ");
-//                        System.out.println("4. Kelola Penjualan");
-//                        System.out.println("5. Kelola Event Bazar");
-//                        System.out.println("6. Kelola Laporan Keuangan");
-//                        System.out.println("7. Laporan");
-//                        System.out.println("0. Back");
-//                        System.out.print("Silahkan pilih : ");
-//                        opsi = sc.nextInt();
-//                        switch(opsi) {
-//                            case 1 -> {
-//                                System.out.print(" || ======== PROFIL TOKO ======== ||");
-//                                Toko toko = new Toko();
-//                                toko.setToko("Toko Buku Jaya Sukses", "Porsea", "Otniel Simanungkalit", "1. Gilbert", "jayasukses21@gmail.com", "0812425354");
-//                                System.out.println("============================");
-//                                toko.display();
-//                                System.out.println("============================");
-//                            }
-//                            
-//                            case 2 -> {
-//                                DataDeskripsi dataDeskripsi = new DataDeskripsi();
-//                                dataDeskripsi.show();
-//                                System.out.println("1.Tampil\n2.Tambah\n3.Edit\n4.Hapus");
-//                                opsi = sc.nextInt();
-//                                    switch(opsi) {
-//                                        case 1 -> dataDeskripsi.show();
-//                                        case 2 -> dataDeskripsi.addDeksripsi();
-//                                        default -> System.out.println("Tidak ada dalam opsi");
-//                                    }
-//                            }
-//                            
-//                            default -> System.out.println("Pilihan anda tidak ada dalam opsi");
-//                            }
-//                        }while(opsi > 7);
-//                    }
-//                }
-//                case 2 -> auth.loginPembeli();
-//            }
-//        }while(opsi > 2);
-//    }       
-//}
-
-// =========================================================================================================================================================
-
 public class PenjualanBuku{
     
     /**
     * @param args the command line arguments
     */
-    static String namaToko, alamat, pemilik, karyawan, email, no_telp, isi, biaya;
+    static String namaToko, alamat, pemilik, karyawan, email, no_telp, notelp, biaya, nama, usia;
     static String description, detailProduk, packing;
     
     public static void main(String[] args){
@@ -90,11 +28,19 @@ public class PenjualanBuku{
         Toko to = new Toko();
         Autentikasi auten = new Autentikasi();
         Buku buku = new Buku();
-        Penjualan penjualan = new Penjualan();
+        Karyawan karyawan1 = new Karyawan();
         Pemesanan pesan = new Pemesanan();
+        KaryawanToko anggota = new KaryawanToko();
         Komentar komen = new Komentar();
+        RiwayatPembelian riwayatPembelian = new RiwayatPembelian();
         Scanner scan = new Scanner(System.in);
         Komentar.shows show = komen.new  shows();
+
+        //tanggal
+        Date dt = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String tgl_jam = sdf.format(dt);
+        String n = tgl_jam;
         
         
         /* PROFIL TOKO BUKU JAYA SUKSES */
@@ -124,19 +70,15 @@ public class PenjualanBuku{
         event.addEventBazar("Bazar Akbar", "25/12/2022", "Medan merdeka");
         event.addEventBazar("Inovasi", "30/12/2022", "Balige");
         
-        // Customer Service
-        CustomerService laporan = new CustomerService();
-        laporan.addLaporan("haol", "5", "olo");
-        laporan.addLaporan("tiang", "4", "daong");
-        
         //Buku
         buku.addBuku("Habislah", 5, 2000000, TipeBuku.PELAJARAN, "Gramedia");
+        buku.addBuku("Mantap", 7, 2500000, TipeBuku.NOVEL, "Jahultop");
         
         
         /* KOMENTAR */
         Komentar komentar = new Komentar();
         
-        /* PENGEMBALIAN BARANG */
+        /* PENGEMBALIAN BUKU */
         PengembalianBuku form = new PengembalianBuku();
         
         
@@ -146,7 +88,6 @@ public class PenjualanBuku{
             System.out.print("Login sebagai : ");
             awal = scan.nextInt();
             if (awal == 1) {
-
                 auten.loginAdmin();
                 do {
                     toko.menuUtamaAdmin();
@@ -223,7 +164,7 @@ public class PenjualanBuku{
                                         Deskripsi[i].display();
                                     }
                                 }
-                                System.out.println("Pilih aturan ke : ");
+                                System.out.println("Pilih Deskripsi ke : ");
                                 int in = scan.nextInt();
                                 int ac = in - 1;
                                 System.out.printf("Deskripsi  : ");
@@ -258,7 +199,7 @@ public class PenjualanBuku{
                             System.out.println("1. Tambah Buku");
                             System.out.println("2. Edit Buku");
                             System.out.println("3. Hapus Buku");
-                            System.out.println("4. Daftar Buku");
+                            System.out.println("4. Daftar Pesanan");
                             System.out.println("0. Keluar");
                             System.out.println("Pilih : ");
                             sub = scan.nextInt();
@@ -267,7 +208,7 @@ public class PenjualanBuku{
                                 int jumlah_buku, harga;
                                 System.out.printf("Nama Buku: ");
                                 nama = scan.next();
-                                System.out.printf("Jumlah Buku : ");
+                                System.out.printf("Stok Buku : ");
                                 jumlah_buku = scan.nextInt();
                                 System.out.printf("Harga Buku : ");
                                 harga = scan.nextInt();
@@ -288,7 +229,7 @@ public class PenjualanBuku{
                                 if (dl > 0) {
                                     System.out.printf("Nama : ");
                                     nama = scan.next();
-                                    System.out.printf("Jumlah Kamar : ");
+                                    System.out.printf("Jumlah Buku : ");
                                     jumlah_kamar = scan.nextInt();
                                     System.out.printf("Harga : ");
                                     harga = scan.nextInt();
@@ -340,74 +281,14 @@ public class PenjualanBuku{
 
                         } while (sub != 0);
                     }
-
                     if (utama == 4) {
-                        int dl;
-                        do {
-                            int stok, harga;
-                            String nama;
-
-                            System.out.println("======= Penjualan Buku =======");
-                            penjualan.tampilPenjualan();
-                            System.out.println("\n");
-
-                            System.out.println("1. Tambah Penjualan Buku");
-                            System.out.println("2. Edit Penjualan Buku");
-                            System.out.println("3. Hapus Penjualan Buku");
-                            System.out.println("0. Keluar");
-                            System.out.println("Pilih : ");
-                            sub = scan.nextInt();
-                            if (sub == 1) {
-                                System.out.printf("Nama : ");
-                                nama = scan.next();
-                                System.out.printf("Stok : ");
-                                stok = scan.nextInt();
-                                System.out.printf("Harga : ");
-                                harga = scan.nextInt();
-
-                                penjualan.addPenjualan(nama, stok, harga);
-
-                            }
-                            if (sub == 2) {
-
-                                System.out.println("Pilih Penjualan Buku: ");
-                                dl = scan.nextInt();
-
-                                if (dl > 0) {
-                                    System.out.printf("Nama : ");
-                                    nama = scan.next();
-                                    System.out.printf("Stok : ");
-                                    stok = scan.nextInt();
-                                    System.out.printf("Harga : ");
-                                    harga = scan.nextInt();
-
-                                    penjualan.updatePenjualan(nama, stok, harga, dl - 1);
-                                } else {
-                                    break;
-                                }
-
-                            }
-                            if (sub == 3) {
-                                System.out.println("Pilih Buku : ");
-                                dl = scan.nextInt();
-                                if (dl > 0) {
-                                    penjualan.deletePenjualan(dl - 1);
-                                } else {
-                                    break;
-                                }
-                            }
-
-                        } while (sub != 0);
-
-                    }
-                    if (utama == 5) {
                         int dl;
                         do {
                             System.out.println("======= Event Bazar Buku =======");
                             event.tampilEventBazar();
                             System.out.println("1. Tambah Event Bazar");
-                            System.out.println("2. Edit Event");
-                            System.out.println("3. Hapus Event");
+                            System.out.println("2. Edit Event Bazar");
+                            System.out.println("3. Hapus Event Bazar");
                             System.out.println("0. Keluar");
                             System.out.println("Pilih : ");
                             sub = scan.nextInt();
@@ -437,7 +318,6 @@ public class PenjualanBuku{
                                 } else {
                                     break;
                                 }
-
                             }
                             if (sub == 3) {
                                 System.out.println("Pilih Event : ");
@@ -451,52 +331,69 @@ public class PenjualanBuku{
 
                         } while (sub != 0);
                     }
-                    if (utama == 6) {
-                        do {
-                            System.out.println("Laporan Keuangan");
-                            laporan.tampil();
-                            System.out.println("1. Tambah Laporan");
-                            System.out.println("2. Edit Laporan");
-                            System.out.println("3. Hapus Laporan");
-                            System.out.println("0. Keluar");
-                            sub = scan.nextInt();
-                            if (sub == 1) {
-                                String isi, tanggal, biaya;
-                                System.out.print("Perihal : ");
-                                isi = scan.next();
-                                System.out.print("Tanggal : ");
-                                tanggal = scan.next();
-                                System.out.print("Biaya : Rp.");
-                                biaya = scan.next();
-                                laporan.addLaporan(isi, tanggal, biaya);
-                            }
-                            if (sub == 2) {
-                                int dl;
-                                System.out.println("Pilih laporan yang akan diupdate : ");
-                                dl = scan.nextInt();
-                                String isi, tanggal, biaya;
-                                System.out.print("Perihal : ");
-                                isi = scan.next();
-                                System.out.print("Tanggal : ");
-                                tanggal = scan.next();
-                                System.out.print("Biaya : Rp.");
-                                biaya = scan.next();
-                                laporan.updateLaporan(dl - 1, isi, tanggal, biaya);
-                            }
+                    if(utama == 6){
+                        int dl;
 
-                            if (sub == 3) {
-                                int dl;
-                                System.out.println("Pilih laporan yang akan dihapus : ");
-                                dl = scan.nextInt();
-                                laporan.deleteLaporan(dl - 1);
-                            }
-                        } while (sub != 0);
+                    do {
+                        int stok, harga;
+                        String nama;
 
+                        System.out.println("======= Data Karayawan Toko =======");
+                        karyawan1.tampilKaryawan();
+                        System.out.println("\n");
+
+                        System.out.println("1. Tambah Karyawan");
+                        System.out.println("2. Edit Data Karyawan");
+                        System.out.println("3. Hapus Data Karyawan");
+                        System.out.println("0. Keluar");
+                        System.out.println("Pilih : ");
+                        sub = scan.nextInt();
+                        if (sub == 1) {
+                            System.out.printf("Nama : ");
+                            nama = scan.next();
+                            System.out.printf("Usia : ");
+                            usia = scan.next();
+                            System.out.printf("No Telepon : ");
+                            notelp = scan.next();
+
+                            karyawan1.addKaryawan(nama, usia, notelp);
+
+                        }
+                        if (sub == 2) {
+
+                            System.out.println("Pilih Data yang mau di Edit : ");
+                            dl = scan.nextInt();
+
+                            if (dl > 0) {
+                                System.out.printf("Nama Karyawan : ");
+                                nama = scan.next();
+                                System.out.printf("Usia : ");
+                                usia = scan.next();
+                                System.out.printf("Notelp : ");
+                                notelp = scan.next();
+
+                                karyawan1.updateKaryawan(nama, usia, notelp, dl - 1);
+                            } else {
+                                break;
+                            }
+                        }
+                        if (sub == 3) {
+                            System.out.println("Pilih Penjualan : ");
+                            dl = scan.nextInt();
+                            if (dl > 0) {
+                                karyawan1.deleteKaryawan(dl - 1);
+                            } else {
+                                break;
+                            }
+                        }
+
+                    } while (sub != 0);
                     }
+
                     if (utama == 7) {
                         int a;
                         
-                        System.out.println("\t======= Laporan ======");
+                        System.out.println("\t======= Pengembalian Buku & Penilaian  ======");
                         System.out.println("1. Daftar Request Pengembalian Buku");
                         System.out.println("2. Daftar Komentar");
                         System.out.println("0. Keluar");
@@ -531,7 +428,7 @@ public class PenjualanBuku{
                         }while(sub !=0);
                     }
                     if (utama == 2) {
-                        do{    
+                        do{
                             System.out.println("\n\t ======= Deskripsi Toko Buku Jaya Sukses ========");
                             for (int i = 0; i < Deskripsi.length; i++) {
                                 if (Deskripsi[i].getDescription()!= null) {
@@ -551,71 +448,72 @@ public class PenjualanBuku{
                         }while(sub !=0);
                     }
                     if (utama == 4) {
-                        do {
-                            System.out.println("\t======== Daftar Buku =======");
-                            buku.tampilBuku();
-                            System.out.println("\n\t======== Daftar Pemesanan Buku =======");
-                            pesan.show();
-                            System.out.println("\n");
-                            int dl;
-                            int jumlah_kamar,jumlah,total,alamat1;
-                            String nama1, status, lokasi1 = null;
-                            long no_telp;
-                            System.out.println("Buku Nomor ke : ");
-                            dl = scan.nextInt();
-                            int pos = dl - 1;
-
-                            for (int i = 0; i < buku.buku.size(); i++) {
-                                if (pos == i) {
-                                    System.out.println(buku.buku.get(i).nama);
-                                    lokasi1 = buku.buku.get(i).nama;
-                                }
-                            }
-                            System.out.print("Nama : ");
-                            nama1 = scan.next();
-                            System.out.print("No Telepon :");
-                            no_telp = scan.nextLong();
-                            System.out.print("Jumlah BUku : ");
-                            jumlah_kamar = scan.nextInt();
-                            for (int i = 0; i < buku.buku.size(); i++) {
-                                if (pos == i) {
-                                    System.out.println(buku.buku.get(i).nama);
-                                    System.out.println("Otniel");
-                                    jumlah = buku.buku.get(i).jumlah_buku;
-                                    System.out.println(jumlah);
-                                    buku.updateBuku(buku.buku.get(dl-1).nama , buku.buku.get(dl-1).jumlah_buku= jumlah, utama = buku.buku.get(dl-1).harga, buku.buku.get(dl-1).tipeBuku.PELAJARAN,  buku.buku.get(dl-1).alamat, dl-1);
-                                    
-                                }
-                            }
-                            System.out.print("Total Harga : Rp.");
-                            for(int i = 0;i<buku.buku.size();i++){
-                                if(pos==i){
-                                    total = jumlah_kamar * buku.buku.get(i).harga;
-                                    System.out.println(total);
-                                }
-                            }
-                            int asd;
-                            System.out.println("Apakah anda yakin memesan ?");
-                            System.out.println("1. Ya\n2. Tidak");
-                            asd = scan.nextInt();
-                            if(asd == 1){
-                                pesan.pesanBuku(jumlah_kamar, nama1, no_telp, lokasi1, status = "Proses");
-                            }
-                            else if(asd == 2){
-                                break;
-                            }
-                            for (int i = 0; i < buku.buku.size(); i++) {
-                                if (pos == i) {
-                                    if(buku.buku.get(i).jumlah_buku < 0){
-                                        System.out.println("Stok Buku Tidak Mencukupi");
-                                        pesan.hapusPemesanan(i);
+                        try {
+                            do {
+                                System.out.println("\t======== Daftar Buku =======");
+                                buku.tampilBuku();
+                                System.out.println("\n\t======== Daftar Penjualan Buku =======");
+                                pesan.show();
+                                System.out.println("\n");
+                                int dl;
+                                int jumlah_buku, jumlah, total, alamat1;
+                                String nama1, status, lokasi1 = null;
+                                long no_telp;
+                                System.out.println("Buku Nomor ke : ");
+                                dl = scan.nextInt();
+                                int pos = dl - 1;
+                                for (int i = 0; i < buku.buku.size(); i++) {
+                                    if (pos == i) {
+                                        System.out.println(buku.buku.get(i).nama);
+                                        lokasi1 = buku.buku.get(i).nama;
                                     }
                                 }
-                            }
-                            System.out.println("0. Keluar");
-                            sub = scan.nextInt();
+                                System.out.print("Nama : ");
+                                nama1 = scan.next();
+                                System.out.print("No Telepon :");
+                                no_telp = scan.nextLong();
+                                System.out.print("Jumlah BUku : ");
+                                jumlah_buku = scan.nextInt();
+                                for (int i = 0; i < buku.buku.size(); i++) {
+                                    if (pos == i) {
+                                        System.out.println(buku.buku.get(i).nama);
+                                        System.out.println("Otniel");
+                                        jumlah = buku.buku.get(i).jumlah_buku;
+                                        System.out.println(jumlah);
+                                        buku.updateBuku(buku.buku.get(dl - 1).nama, buku.buku.get(dl - 1).jumlah_buku = jumlah, utama = buku.buku.get(dl - 1).harga, buku.buku.get(dl - 1).tipeBuku.PELAJARAN, buku.buku.get(dl - 1).alamat, dl - 1);
 
-                        } while (sub != 0);
+                                    }
+                                }
+                                System.out.print("Total Harga : Rp.");
+                                for (int i = 0; i < buku.buku.size(); i++) {
+                                    if (pos == i) {
+                                        total = jumlah_buku * buku.buku.get(i).harga;
+                                        System.out.println(total);
+                                    }
+                                }
+                                int asd;
+                                System.out.println("Apakah anda yakin memesan ?");
+                                System.out.println("1. Ya\n2. Tidak");
+                                asd = scan.nextInt();
+                                if (asd == 1) {
+                                    pesan.pesanBuku(jumlah_buku, nama1, no_telp, lokasi1, status = "Proses");
+                                } else if (asd == 2) {
+                                    break;
+                                }
+                                for (int i = 0; i < buku.buku.size(); i++) {
+                                    if (pos == i) {
+                                        if (buku.buku.get(i).jumlah_buku < 0) {
+                                            System.out.println("Stok Buku Tidak Mencukupi");
+                                            pesan.hapusPemesanan(i);
+                                        }
+                                    }
+                                }
+                                System.out.println("0. Keluar");
+                                sub = scan.nextInt();
+                            } while (sub != 0);
+                        }catch (Exception e){
+
+                        }
                     }
                     if (utama == 5) {
                         String hal, namaAnda, namaBuku;
@@ -629,85 +527,31 @@ public class PenjualanBuku{
                         form.addPermohonan(hal, namaBuku, namaBuku);
                     }
                     if (utama == 6) {
-                        int dl;
-                        do {
-                            int stok, harga;
-                            String nama;
-
-                            System.out.println("======= Penjualan =======");
-                            penjualan.tampilPenjualan();
-                            System.out.println("\n");
-
-                            System.out.println("1. Tambah Penjualan");
-                            System.out.println("2. Edit Penjualan");
-                            System.out.println("3. Hapus Penjualan");
-                            System.out.println("0. Keluar");
-                            System.out.println("Pilih : ");
-                            sub = scan.nextInt();
-                            if (sub == 1) {
-                                System.out.printf("Nama : ");
-                                nama = scan.next();
-                                System.out.printf("Stok : ");
-                                stok = scan.nextInt();
-                                System.out.printf("Harga : ");
-                                harga = scan.nextInt();
-
-                                penjualan.addPenjualan(nama, stok, harga);
-
-                            }
-                            if (sub == 2) {
-
-                                System.out.println("Pilih Penjualan : ");
-                                dl = scan.nextInt();
-
-                                if (dl > 0) {
-                                    System.out.printf("Nama : ");
-                                    nama = scan.next();
-                                    System.out.printf("Stok : ");
-                                    stok = scan.nextInt();
-                                    System.out.printf("Harga : ");
-                                    harga = scan.nextInt();
-
-                                    penjualan.updatePenjualan(nama, stok, harga, dl - 1);
-                                } else {
-                                    break;
-                                }
-
-                            }
-                            if (sub == 3) {
-                                System.out.println("Pilih Penjualan : ");
-                                dl = scan.nextInt();
-                                if (dl > 0) {
-                                    penjualan.deletePenjualan(dl - 1);
-                                } else {
-                                    break;
-                                }
-                            }
-
-                        } while (sub != 0);
-
+                        System.out.println("======= Data Karyawan Toko =======");
+                        karyawan1.tampilKaryawan();
+                        System.out.println("\n");
                     }
                     if (utama == 7) {
-                        do{
-                            System.out.println("Pengambalian Buku ");
-                            form.tampil();
-                            System.out.println("0. Keluar");
-                            sub = scan.nextInt();
-                        }while(sub!=0);
+                        System.out.println("History Pembelian");
+//                        riwayatPembelian.show();
+                        pesan.show();
                     }
                     if (utama == 8) {
-                        String koment;
+                        String koment = null;
+                        String nama;
                         System.out.println("\t========== Berikan Penilaian Anda  ==========");
+                        System.out.println("Nama Anda : ");
+                        nama = scan.next();
                         System.out.print("Masukkan Penilaian Anda : ");
                         koment = scan.next();
-                        komen.addKomentar(koment);
+                        komen.addKomentar(nama,koment);
                     }
                 } while (utama != 0);
             }
         } while (awal != 0);
     }
     public void menuLogin(){
-        System.out.println("|| ========  Selamat datan di Toko Buku Jaya Suskse Silahkan Login ======== ||");
+        System.out.println("|| ========  Selamat datang di Toko Buku Jaya Suskse Silahkan Login ======== ||");
         System.out.println("1. Login Sebagai Admin ");
         System.out.println("2. Login Sebagai Pembeli");
         System.out.println("0. Keluar");
@@ -715,25 +559,27 @@ public class PenjualanBuku{
     public void menuUtamaAdmin() {
         System.out.println("========= Selamat Datang Admin Baen hamu na denggan tu Customer ==========");
         System.out.println("\t   ====== ADMIN TOKO BUKU JAYA SUKSES =======");
+        System.out.println("\t   || ================================== ||");
         System.out.println("1. Profil Toko Buku Jaya Sukses");
         System.out.println("2. Deskripsi Toko");
         System.out.println("3. Buku yang dijual");
         System.out.println("4. Kelola Penjualan");
         System.out.println("5. Event Bazar Buku");
-        System.out.println("6. Kelola Laporan Keuangan");
+        System.out.println("6. Daftar Karyawan Toko Buku Jay Sukses");
         System.out.println("7. Pengembalian buku & Penilaian");
         System.out.println("0. Back");
     }
     
     public void menuUtamaCustomer() {
         System.out.println("========= Selamat Datang Customer kami Buku adalah jendela Dunia ==========");
+        System.out.println("\t   || ================================== ||");
         System.out.println("1. Profil Toko Buku Jaya Suskes");
         System.out.println("2. Deskripsi Toko");
         System.out.println("3. Informasi Bazar Buku");
         System.out.println("4. Pemesanan Buku");
         System.out.println("5. Pengembalian Buku");
-        System.out.println("6. Pengembalian Buku");
-        System.out.println("7. Laporan Keuangan");
+        System.out.println("6. Data Karyawan");
+        System.out.println("7. Riwayat Pembelian");
         System.out.println("8. Komentar");
         System.out.println("0. Back");
     }

@@ -43,7 +43,7 @@ public class Buku {
     
     
      public void tampilBuku(){
-        System.out.println("No" +"\tNama" + "\t\t      Jumlah Buku"+              "\tHarga"+"         \tTipe"+"     \tPenerbit");
+        System.out.println("No" +"\tNama" + "\t\t      Stok Buku"+              "\tHarga"+"         \tTipe"+"     \tPenerbit");
         for(int i=0;i<buku.size();i++){
             if(buku.get(i).jumlah_buku < 0){
                 System.out.println("Sisa Buku");
