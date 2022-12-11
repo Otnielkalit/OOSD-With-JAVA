@@ -222,7 +222,7 @@ public class PenjualanBuku{
                             }
                             if (sub == 2) {
                                 String nama, tipe, alamat;
-                                int jumlah_kamar, harga;
+                                int jumlah_buku, harga;
                                 System.out.println("Pilih Homestay : ");
                                 dl = scan.nextInt();
 
@@ -230,7 +230,7 @@ public class PenjualanBuku{
                                     System.out.printf("Nama : ");
                                     nama = scan.next();
                                     System.out.printf("Jumlah Buku : ");
-                                    jumlah_kamar = scan.nextInt();
+                                    jumlah_buku = scan.nextInt();
                                     System.out.printf("Harga : ");
                                     harga = scan.nextInt();
                                     System.out.println("Pilihan : Standar, Delux, VIP");
@@ -238,7 +238,7 @@ public class PenjualanBuku{
                                     tipe = scan.next();
                                     System.out.printf("Alamat : ");
                                     alamat = scan.next();
-                                    buku.updateBuku(nama, jumlah_kamar, harga, TipeBuku.valueOf(tipe), alamat, dl - 1);
+                                    buku.updateBuku(nama, jumlah_buku, harga, TipeBuku.valueOf(tipe), alamat, dl - 1);
                                 } else {
                                     break;
                                 }
@@ -269,7 +269,7 @@ public class PenjualanBuku{
                                 System.out.println("1. Terima");
                                 System.out.println("2. Tolak");
                                 System.out.println("Pilih");
-                                //                            jumlah_kamar =
+
                                 dl = scan.nextInt();
                                 if (dl == 1) {
                                     pesan.updateBuku(ops - 1, jumlah_buku = pesan.pemesanan.get(ops - 1).jumlah_buku, nama = pesan.pemesanan.get(ops - 1).nama, alamat = pesan.pemesanan.get(ops - 1).alamat, no_telp = pesan.pemesanan.get(ops - 1).no_telp, status = dua);
