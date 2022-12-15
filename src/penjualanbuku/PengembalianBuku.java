@@ -23,9 +23,16 @@ public class PengembalianBuku {
     }
     
     public void tampil(){
-        System.out.println("No"+"\t\t\tNama Customer\tNama Buku\tAlasan Pengembalian");
+        int num = 0;
+//        System.out.println("No"+"\t\t\tNama Customer\tNama Buku\tAlasan Pengembalian");
         for(int i=0;i<form.size();i++){
             System.out.println(i+1+"\t"+form.get(i).alasan_pengembalian+"\t"+form.get(i).namaAnda);
+
+            num ++;
+            System.out.println("Nomor"+num);
+            System.out.println("Nama CUstomer :"+form.get(i).namaAnda);
+            System.out.println("Nama CUstomer :"+form.get(i).namaBuku);
+            System.out.println("Nama CUstomer :"+form.get(i).alasan_pengembalian);
         }
     }
     

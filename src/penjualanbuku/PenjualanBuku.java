@@ -71,8 +71,8 @@ public class PenjualanBuku{
         event.addEventBazar("Inovasi", "30/12/2022", "Balige");
 
         //Buku
-        buku.addBuku("Habislah", 5, 2000000, TipeBuku.PELAJARAN, "Gramedia");
-        buku.addBuku("Mantap", 7, 2500000, TipeBuku.NOVEL, "Jahultop");
+        buku.addBuku("Matematika Diskrit", 100, 2000000, TipeBuku.PELAJARAN, "Erlangga");
+        buku.addBuku("Cinderala", 20, 2500000, TipeBuku.NOVEL, "Gramedia");
 
 
         /* KOMENTAR */
@@ -80,7 +80,7 @@ public class PenjualanBuku{
 
         /* PENGEMBALIAN BUKU */
         PengembalianBuku form = new PengembalianBuku();
-
+        String status = null;
 
         int awal, utama, sub;
         do {
@@ -257,7 +257,7 @@ public class PenjualanBuku{
                             if (sub == 4) {
                                 int ops;
                                 int jumlah_buku;
-                                String nama, status, alamat;
+                                String nama, alamat;
                                 long no_telp;
                                 pesan.show();
                                 String satu = "Tolak Pesanan";
@@ -457,7 +457,7 @@ public class PenjualanBuku{
                                 System.out.println("\n");
                                 int dl;
                                 int jumlah_buku, jumlah, total, alamat1;
-                                String nama1, status, lokasi1 = null;
+                                String nama1, lokasi1 = null;
                                 long no_telp;
                                 System.out.println("Buku Nomor ke : ");
                                 dl = scan.nextInt();
@@ -472,6 +472,8 @@ public class PenjualanBuku{
                                 nama1 = scan.next();
                                 System.out.print("No Telepon :");
                                 no_telp = scan.nextLong();
+                                System.out.print("Alamat : ");
+                                alamat = scan.next();
                                 System.out.print("Jumlah BUku : ");
                                 jumlah_buku = scan.nextInt();
                                 for (int i = 0; i < buku.buku.size(); i++) {
@@ -534,7 +536,11 @@ public class PenjualanBuku{
                     if (utama == 7) {
                         System.out.println("History Pembelian");
 //                        riwayatPembelian.show();
-                        pesan.show();
+                        if(status == "Proses") {
+                            pesan.show();
+                        } else if(status == "Terima Pesanan") {
+                            pesan.showWithDate();
+                        }
                     }
                     if (utama == 8) {
                         String koment = null;
@@ -565,7 +571,7 @@ public class PenjualanBuku{
         System.out.println("3. Buku yang dijual");
         System.out.println("4. Event Bazar Buku");
         System.out.println("5. Daftar Karyawan Toko Buku Jaya Sukses");
-        System.out.println("6. Penilaian");
+        System.out.println("6. Pengembalian Buku dan Daftar Komentar");
         System.out.println("0. Back");
     }
 

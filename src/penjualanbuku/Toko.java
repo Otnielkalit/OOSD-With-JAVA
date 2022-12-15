@@ -85,7 +85,12 @@ public class Toko implements Display{
 
     @Override
     public void display() {
-        System.out.println("\nNama Toko : "+getNamaToko()+"\nAlamat Toko : "+getAlamat()+"\nPemilik Toko : "+getPemilik()+"\nKaryawan Toko : "+getKaryawan()+"\nEmail : "+getEmail()+"\nNo Telepon : "+getNoTelp());
+//        System.out.println("\nNama Toko  : "+getNamaToko()+"\nAlamat Toko : "+getAlamat()+"\nPemilik Toko : "+getPemilik()+"\nKaryawan Toko : "+getKaryawan()+"\nEmail : "+getEmail()+"\nNo Telepon : "+getNoTelp());
+        System.out.println("Nama Toko    :"+getNamaToko());
+        System.out.println("Alamat Toko  :"+getNamaToko());
+        System.out.println("Pemilik Toko :"+getPemilik());
+        System.out.println("Email Toko   :"+getEmail());
+        System.out.println("No Telp      :"+getNoTelp());
     }
     
     public void editToko(){

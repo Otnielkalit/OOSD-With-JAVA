@@ -31,9 +31,14 @@ public class Komentar  {
         }
         @Override
         public void tampil() {
-            System.out.println("No"+"\tNama"+"\t Komentar");
+            int num = 0;
+//            System.out.println("No"+"\tNama"+"\t Komentar");
             for(int i=0;i<komentar.size();i++){
                 System.out.println(i+1+"\t"+komentar.get(i).nama+"\t"+komentar.get(i).komen);
+
+                num++;
+                System.out.println("Nama        :"+komentar.get(i).nama);
+                System.out.println("Komentar    :"+komentar.get(i).komen);
             }
         }
     }

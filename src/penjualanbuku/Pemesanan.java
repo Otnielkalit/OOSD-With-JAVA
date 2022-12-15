@@ -4,6 +4,8 @@
  */
 package penjualanbuku;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 /**
  *
@@ -16,6 +18,8 @@ public class Pemesanan {
     long no_telp;
     String status;
     String alamat;
+
+
     
     ArrayList<Pemesanan> pemesanan = new ArrayList();
 
@@ -48,6 +52,26 @@ public class Pemesanan {
         System.out.println("No"+"\t\tNama Anda"+"\t\tNo Telp"+"\t\tJumlah Buku"+"\t\tAlamat"+"\t\tStatus");
         for(int i = 0;i<pemesanan.size();i++){
             System.out.println(i+1+"\t\t"+pemesanan.get(i).nama+"\t\t"+pemesanan.get(i).no_telp+"\t\t"+pemesanan.get(i).jumlah_buku+"\t\t"+pemesanan.get(i).alamat+"\t\t"+pemesanan.get(i).status);
+        }
+    }
+
+    public void showWithDate(){
+        long millis=System.currentTimeMillis();
+        java.sql.Date date = new java.sql.Date(millis);
+        int num = 0;
+//        System.out.println("No"+"\t\tNama Anda"+"\t\tNo Telp"+"\t\tJumlah Buku"+"\t\tAlamat"+"\t\tStatus");
+        for(int i = 0;i<pemesanan.size();i++){
+//            System.out.println(i+1+"\t\t"+pemesanan.get(i).nama+"\t\t"+pemesanan.get(i).no_telp+"\t\t"+pemesanan.get(i).jumlah_buku+"\t\t"+pemesanan.get(i).alamat+"\t\t"+pemesanan.get(i).status + date);
+            ++num;
+            System.out.println("No."+num);
+            System.out.println("Nama              : "+pemesanan.get(i).nama);
+            System.out.println("No Telp           : "+pemesanan.get(i).no_telp);
+            System.out.println("Jumlah Buku       : "+pemesanan.get(i).jumlah_buku);
+            System.out.println("Alamat            : "+pemesanan.get(i).alamat);
+            System.out.println("Status            : "+pemesanan.get(i).status);
+            System.out.println("Tanggal Pemesanan : "+date);
+//            System.out.println("Total Harga       : "+pemesanan.get(i).);
+            System.out.println("|| ==============================================");
         }
     }
 

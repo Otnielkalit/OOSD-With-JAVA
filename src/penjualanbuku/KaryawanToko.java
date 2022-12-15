@@ -14,9 +14,16 @@ public class KaryawanToko {
     }
 
     public void tampil(){
+        int num = 0;
         System.out.println("No"+"\tNama Karyawan"+"\t\tUsia"+"\t\t\tNo Telepon");
         for(int i = 0;i<keluaran.size();i++){
             System.out.println(i+1+"\t"+keluaran.get(i).nama+"\t\t"+keluaran.get(i).usia+"\t\t"+"Rp."+keluaran.get(i).notelp);
+
+            num++;
+            System.out.println("Nama Karyawan   :"+keluaran.get(i).nama);
+            System.out.println("Usia Karyawan   :"+keluaran.get(i).usia);
+            System.out.println("Nomor Telepin   :"+keluaran.get(i).notelp);
+            System.out.println("|| ============================================== ||");
         }
     }
 

@@ -26,11 +26,18 @@ public class  EventBazar{
     }
     
     public void tampilEventBazar(){
-        System.out.println("No." + "\tJudul"+"\tTanggal"+"\t\tPenyelenggara");
+        int num =0;
+//        System.out.println("No." + "\tJudul"+"\tTanggal"+"\t\tPenyelenggara");
         for(int i=0;i<eventBazar.size();i++){
-            System.out.println(i+1+". "+"\t"+eventBazar.get(i).judul
-                    +"\t"+ eventBazar.get(i).waktu
-                    +"\t"+ eventBazar.get(i).penyelanggara);
+//            System.out.println(i+1+". "+"\t"+eventBazar.get(i).judul
+//                    +"\t"+ eventBazar.get(i).waktu
+//                    +"\t"+ eventBazar.get(i).penyelanggara);
+            ++num;
+            System.out.println("Event"+num);
+            System.out.println("Nama Bazar      :"+eventBazar.get(i).judul);
+            System.out.println("Waktu Kegiatan  :"+eventBazar.get(i).waktu);
+            System.out.println("Nama Bazar      :"+eventBazar.get(i).penyelanggara);
+            System.out.println("|| ========================================== ||");
         }
     }
     
