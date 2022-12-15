@@ -102,8 +102,6 @@ public class Toko implements Display{
         alamat = scan.next();
         System.out.print("Pemilik Toko : ");
         pemilik = scan.next();
-        System.out.print("Karyawan Toko : ");
-        karyawan = scan.next();
         System.out.print("Email : ");
         email = scan.next();
         System.out.print("No Telepon : ");

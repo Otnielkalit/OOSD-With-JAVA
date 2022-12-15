@@ -33,7 +33,7 @@ public class PenjualanBuku{
         KaryawanToko anggota = new KaryawanToko();
         Komentar komen = new Komentar();
         RiwayatPembelian riwayatPembelian = new RiwayatPembelian();
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in).useDelimiter("\n");
         Komentar.shows show = komen.new  shows();
 
         //tanggal
@@ -140,13 +140,14 @@ public class PenjualanBuku{
                                 }
                                 if (x == 1) {
                                     System.out.println("==================================");
+                                    Scanner scanner = new Scanner(System.in).useDelimiter("\n");
                                     System.out.printf("Deskripsi : ");
                                     description = scan.next();
                                     Deskripsi[t].setDescription(description);
                                     System.out.printf("Detail : ");
                                     detailProduk = scan.next();
                                     Deskripsi[t].setDetailProduk(detailProduk);
-                                    System.out.printf("Hukuman : ");
+                                    System.out.printf("Deskripsi ke: ");
                                     packing = scan.next();
                                     Deskripsi[t].setPacking(packing);
                                     System.out.println("==================================");

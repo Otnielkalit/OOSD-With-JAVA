@@ -53,7 +53,7 @@ public class Deskripsi{
     }
     
     public void display() {
-//        System.out.println("Judul :\t\t"+detailProduk+"\nTingkat :\t"+description+"\nJenis hukuman :\t"+packing+"\n");
+
         System.out.println("Detail Buku     :"+detailProduk);
         System.out.println("Deskripsi Buku  :"+description);
         System.out.println("Sistem Packing  :"+packing);
