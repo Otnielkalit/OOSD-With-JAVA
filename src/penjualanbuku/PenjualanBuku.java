@@ -14,15 +14,15 @@ import java.util.Scanner;
  */
 
 public class PenjualanBuku{
-    
+
     /**
     * @param args the command line arguments
     */
     static String namaToko, alamat, pemilik, karyawan, email, no_telp, notelp, biaya, nama, usia;
     static String description, detailProduk, packing;
-    
+
     public static void main(String[] args){
-        
+
         PenjualanBuku toko = new PenjualanBuku();
         EventBazar even = new EventBazar();
         Toko to = new Toko();
@@ -41,8 +41,8 @@ public class PenjualanBuku{
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String tgl_jam = sdf.format(dt);
         String n = tgl_jam;
-        
-        
+
+
         /* PROFIL TOKO BUKU JAYA SUKSES */
         Toko profil = new Toko();
         Toko Toko[] = new Toko[100];
@@ -57,31 +57,31 @@ public class PenjualanBuku{
         for (int i = 0; i < Deskripsi.length; i++) {
             Deskripsi[i] = new Deskripsi(description, detailProduk, packing);
         }
-        Deskripsi[0].setDeskripsi("Terimakasih telah berkunjung ke Toko Buku Jaya Sukses", "Anda Dapat memesan buku yang anda inginkan kami pasti memberikan yang terbaik untuk anda.", 
+        Deskripsi[0].setDeskripsi("Terimakasih telah berkunjung ke Toko Buku Jaya Sukses", "Anda Dapat memesan buku yang anda inginkan kami pasti memberikan yang terbaik untuk anda.",
                 "Kami pastikan Pengiriman barang anda sesuai dengan pesanan dan selamat sampai tujuan");
-        Deskripsi[1].setDeskripsi("Terimakasih telah berkunjung ke Toko Buku Jaya Sukses", "Anda Dapat memesan buku yang anda inginkan kami pasti memberikan yang terbaik untuk anda.", 
+        Deskripsi[1].setDeskripsi("Terimakasih telah berkunjung ke Toko Buku Jaya Sukses", "Anda Dapat memesan buku yang anda inginkan kami pasti memberikan yang terbaik untuk anda.",
                 "Kami pastikan Pengiriman barang anda sesuai dengan pesanan dan selamat sampai tujuan");
-        Deskripsi[2].setDeskripsi("Terimakasih telah berkunjung ke Toko Buku Jaya Sukses", "Anda Dapat memesan buku yang anda inginkan kami pasti memberikan yang terbaik untuk anda.", 
+        Deskripsi[2].setDeskripsi("Terimakasih telah berkunjung ke Toko Buku Jaya Sukses", "Anda Dapat memesan buku yang anda inginkan kami pasti memberikan yang terbaik untuk anda.",
                 "Kami pastikan Pengiriman barang anda sesuai dengan pesanan dan selamat sampai tujuan");
 
-        
+
         /* EVENT BAZAR TOKO BUKU JAYA SUKSES */
         EventBazar event = new EventBazar();
         event.addEventBazar("Bazar Akbar", "25/12/2022", "Medan merdeka");
         event.addEventBazar("Inovasi", "30/12/2022", "Balige");
-        
+
         //Buku
         buku.addBuku("Habislah", 5, 2000000, TipeBuku.PELAJARAN, "Gramedia");
         buku.addBuku("Mantap", 7, 2500000, TipeBuku.NOVEL, "Jahultop");
-        
-        
+
+
         /* KOMENTAR */
         Komentar komentar = new Komentar();
-        
+
         /* PENGEMBALIAN BUKU */
         PengembalianBuku form = new PengembalianBuku();
-        
-        
+
+
         int awal, utama, sub;
         do {
             toko.menuLogin();
@@ -331,7 +331,7 @@ public class PenjualanBuku{
 
                         } while (sub != 0);
                     }
-                    if(utama == 6){
+                    if(utama == 5){
                         int dl;
 
                     do {
@@ -390,9 +390,9 @@ public class PenjualanBuku{
                     } while (sub != 0);
                     }
 
-                    if (utama == 7) {
+                    if (utama == 6) {
                         int a;
-                        
+
                         System.out.println("\t======= Pengembalian Buku & Penilaian  ======");
                         System.out.println("1. Daftar Request Pengembalian Buku");
                         System.out.println("2. Daftar Komentar");
@@ -563,13 +563,12 @@ public class PenjualanBuku{
         System.out.println("1. Profil Toko Buku Jaya Sukses");
         System.out.println("2. Deskripsi Toko");
         System.out.println("3. Buku yang dijual");
-        System.out.println("4. Kelola Penjualan");
-        System.out.println("5. Event Bazar Buku");
-        System.out.println("6. Daftar Karyawan Toko Buku Jay Sukses");
-        System.out.println("7. Pengembalian buku & Penilaian");
+        System.out.println("4. Event Bazar Buku");
+        System.out.println("5. Daftar Karyawan Toko Buku Jaya Sukses");
+        System.out.println("6. Penilaian");
         System.out.println("0. Back");
     }
-    
+
     public void menuUtamaCustomer() {
         System.out.println("========= Selamat Datang Customer kami Buku adalah jendela Dunia ==========");
         System.out.println("\t   || ================================== ||");
