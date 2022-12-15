@@ -18,7 +18,7 @@ public class PenjualanBuku{
     /**
     * @param args the command line arguments
     */
-    static String namaToko, alamat, pemilik, karyawan, email, no_telp, notelp, biaya, nama, usia;
+    static String namaToko, alamat, pemilik, karyawan, email, no_telp, notelp, penerbit, nama, usia;
     static String description, detailProduk, packing;
 
     public static void main(String[] args){
@@ -234,12 +234,12 @@ public class PenjualanBuku{
                                     jumlah_buku = scan.nextInt();
                                     System.out.printf("Harga : ");
                                     harga = scan.nextInt();
-                                    System.out.println("Pilihan : Standar, Delux, VIP");
+                                    System.out.println("Pilihan : Pelajaran, Tutorial, Novel");
                                     System.out.printf("Tipe : ");
                                     tipe = scan.next();
-                                    System.out.printf("Alamat : ");
+                                    System.out.printf("Penerbit : ");
                                     alamat = scan.next();
-                                    buku.updateBuku(nama, jumlah_buku, harga, TipeBuku.valueOf(tipe), alamat, dl - 1);
+                                    buku.updateBuku(nama, jumlah_buku, harga, TipeBuku.PELAJARAN, alamat, dl - 1);
                                 } else {
                                     break;
                                 }
@@ -379,7 +379,7 @@ public class PenjualanBuku{
                             }
                         }
                         if (sub == 3) {
-                            System.out.println("Pilih Penjualan : ");
+                            System.out.println("Pilih Data Ke : ");
                             dl = scan.nextInt();
                             if (dl > 0) {
                                 karyawan1.deleteKaryawan(dl - 1);
@@ -483,7 +483,7 @@ public class PenjualanBuku{
                                         System.out.println("Otniel");
                                         jumlah = buku.buku.get(i).jumlah_buku;
                                         System.out.println(jumlah);
-                                        buku.updateBuku(buku.buku.get(dl - 1).nama, buku.buku.get(dl - 1).jumlah_buku = jumlah, utama = buku.buku.get(dl - 1).harga, buku.buku.get(dl - 1).tipeBuku.PELAJARAN, buku.buku.get(dl - 1).alamat, dl - 1);
+                                        buku.updateBuku(buku.buku.get(dl - 1).nama, buku.buku.get(dl - 1).jumlah_buku = jumlah, utama = buku.buku.get(dl - 1).harga, buku.buku.get(dl - 1).tipeBuku.PELAJARAN, buku.buku.get(dl - 1).penerbit, dl - 1);
 
                                     }
                                 }

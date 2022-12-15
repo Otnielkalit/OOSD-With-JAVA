@@ -49,9 +49,14 @@ public class Pemesanan {
     }
     
     public void show(){
-        System.out.println("No"+"\t\tNama Anda"+"\t\tNo Telp"+"\t\tJumlah Buku"+"\t\tAlamat"+"\t\tStatus");
+//        System.out.println("No"+"\t\tNama Anda"+"\t\tNo Telp"+"\t\tJumlah Buku"+"\t\tAlamat"+"\t\tStatus");
         for(int i = 0;i<pemesanan.size();i++){
-            System.out.println(i+1+"\t\t"+pemesanan.get(i).nama+"\t\t"+pemesanan.get(i).no_telp+"\t\t"+pemesanan.get(i).jumlah_buku+"\t\t"+pemesanan.get(i).alamat+"\t\t"+pemesanan.get(i).status);
+//            System.out.println(i+1+"\t\t"+pemesanan.get(i).nama+"\t\t"+pemesanan.get(i).no_telp+"\t\t"+pemesanan.get(i).jumlah_buku+"\t\t"+pemesanan.get(i).alamat+"\t\t"+pemesanan.get(i).status);
+            System.out.println("Pesanan Nomor" +i+1);
+            System.out.println("Nama Pembeli              :"+pemesanan.get(i).nama);
+            System.out.println("Nomor Telepon             :"+pemesanan.get(i).no_telp);
+            System.out.println("Jumlah buku yang di pesan :"+pemesanan.get(i).jumlah_buku);
+            System.out.println("Alamat Pengiriman         :"+pemesanan.get(i).status);
         }
     }
 
