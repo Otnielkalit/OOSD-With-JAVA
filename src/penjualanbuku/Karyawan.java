@@ -20,14 +20,19 @@ public class Karyawan {
     }
 
     public void tampilKaryawan(){
-        System.out.println("No" +"\tNama" + "\tUsia"+"\tNomor Telepon");
        int num = 0;
         for(Karyawan karyawan : karyawan){
-            System.out.println(++num +". "
-                    +"\t"+ karyawan.nama
-                    +"\t"+ karyawan.usia
-                    +"\t"+ karyawan.notelp
-            );
+//            System.out.println(++num +". "
+//                    +"\t"+ karyawan.nama
+//                    +"\t"+ karyawan.usia
+//                    +"\t"+ karyawan.notelp
+//            );
+            num++;
+            System.out.println("Nomor" +num);
+            System.out.println("Nama Karyawan   :"+karyawan.nama);
+            System.out.println("Usia            :"+karyawan.usia);
+            System.out.println("Nomor Telepon   :"+karyawan.notelp);
+            System.out.println("|| =================================== ||");
         }
     }
 //    public void tampilKaryawan(){
